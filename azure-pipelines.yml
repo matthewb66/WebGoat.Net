@@ -34,13 +34,3 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      curl -s -L https://raw.github.com/matthewb66/detect_rescan/main/detect_rescan.sh > detect_rescan.sh
-      ./detect_rescan.sh --blackduck.api.token=MmEwZTdkNjAtNjU5MS00MWEwLThjZTgtZGI2MTFiNDA2ZDkxOjRhYzc2YTcyLTdiNjMtNGQxZC05ZTNhLTY0NDM0MjEwZjhjZg== --blackduck.trust.cert=true --blackduck.url=https://poc39.blackduck.synopsys.com --detect.detector.search.depth=1 --detect.project.name=webgoat.net --detect.project.version.name=1.0  --detect.policy.check.fail.on.severities=ALL --quiet --report --testxml
-- task: PublishTestResults@2
-  displayName: 'Publish Test Results **/policies.xml'
-  inputs:
-    testResultsFiles: '**/policies.xml' 
