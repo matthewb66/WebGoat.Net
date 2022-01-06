@@ -21,22 +21,11 @@ jobs:
 #       with:
 #         cache: 'npm'
 #     - run: npm install
-    
-#     # Runs a Black Duck rapid scan on pull requests
-#     - name: Run RAPID Black Duck security scan
-#  #     if: ${{github.event_name == 'pull_request'}}
-#       uses: matthewb66/blackduck-scan-action@v21
-#       continue-on-error: true
-#       with:
-#         url: ${{ secrets.BLACKDUCK_URL }}
-#         token: ${{ secrets.BLACKDUCK_API_TOKEN }}
-#         mode: rapid
-#         output: blackduck-output
           
     # Runs special workflow steps for pull requests
     - name: Black Duck security scan for Pull Request
       if: ${{github.event_name == 'pull_request'}}
-      uses: matthewb66/blackduck-scan-action@v26
+      uses: matthewb66/blackduck-scan-action@v27
       with:
         url: ${{ secrets.BLACKDUCK_URL }}
         token: ${{ secrets.BLACKDUCK_API_TOKEN }}
@@ -52,7 +41,7 @@ jobs:
     # Runs special workflow steps for pull requests
     - name: Black Duck security scan for Commit
       if: ${{github.event_name == 'push'}}
-      uses: matthewb66/blackduck-scan-action@v26
+      uses: matthewb66/blackduck-scan-action@v27
       with:
         url: ${{ secrets.BLACKDUCK_URL }}
         token: ${{ secrets.BLACKDUCK_API_TOKEN }}
